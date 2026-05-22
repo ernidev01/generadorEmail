@@ -1,42 +1,58 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
         System.out.println("*** Generador de Emails ***");
 
-        var nombreCompleto = " Pepito Perez Ramirez ";  // Nombre completo del usuario
+        // Nombre completo ingresado por el usuario
+        var nombreCompleto = " Pepito Perez Ramirez ";
         System.out.println("nombreCompleto = " + nombreCompleto);
 
-        // Procesar o normalizar el nombrel del usuario
-        // Limpiar los espacios en blanco al inicio y al final
+        // ===== Normalización del nombre =====
 
+        // Eliminar espacios en blanco al inicio y al final
         var nombreNormalizado = nombreCompleto.strip();
-        nombreNormalizado = nombreNormalizado.replace(" ", "."); // Reemplazar los espacios en blanco por punto
 
+        // Reemplazar los espacios entre palabras por puntos
+        nombreNormalizado = nombreNormalizado.replace(" ", ".");
 
-        nombreNormalizado = nombreNormalizado.toLowerCase(); // Convertimos a minúsculas
+        // Convertir todo el texto a minúsculas
+        nombreNormalizado = nombreNormalizado.toLowerCase();
 
         System.out.println("nombreNormalizado = " + nombreNormalizado);
 
-        // Datos de la empresa
+        // ===== Información de la empresa =====
 
+        // Nombre de la empresa que formará parte del dominio del correo
         var nombreEmpresa = " Google ";
         System.out.println("\nNombre empresa: " + nombreEmpresa);
+
+        // Extensión del dominio corporativo
         var extensionDominio = ".com.co";
         System.out.println("Extensión del dominio: " + extensionDominio);
 
-        // Quitamos los espacios en blanco y convertimos a minúsculas
+        // Normalizar el nombre de la empresa:
+        // 1. Eliminar espacios sobrantes
+        // 2. Reemplazar espacios internos por puntos
+        // 3. Convertir a minúsculas
+        var nombreEmpresaNormalizado = nombreEmpresa
+                .strip()
+                .replace(" ", ".")
+                .toLowerCase();
 
-        var nombreEmpresaNormalizado = nombreEmpresa.strip().replace(" ", ".").toLowerCase();
-        var dominioEmailNormalizado = "@" + nombreEmpresaNormalizado + extensionDominio;
+        // Construir el dominio del correo electrónico
+        var dominioEmailNormalizado = "@"
+                + nombreEmpresaNormalizado
+                + extensionDominio;
+
         System.out.println("dominioEmailNormalizado = " + dominioEmailNormalizado);
 
-        // Creamos el email final
+        // ===== Generación del correo electrónico =====
 
+        // Unir el nombre normalizado con el dominio de la empresa
         var emailNormalizado = nombreNormalizado + dominioEmailNormalizado;
+
         System.out.println("emailNormalizado = " + emailNormalizado);
     }
 }
